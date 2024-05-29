@@ -16,7 +16,7 @@ Bot = {
             local response = gg.makeRequest(url, {["Content-Type"] = "application/x-www-form-urlencoded"}, params)
     
             if response.code == 200 then
-                local updates = json.decode(response.content)
+                local updates = json.parse(response.content)
                 if updates and updates.ok then
                     return updates.result
                 else
@@ -74,7 +74,7 @@ Bot = {
         local response = gg.makeRequest(url, {["Content-Type"] = "application/x-www-form-urlencoded"}, params)
 
         if response.code == 200 then
-            local message = json.decode(response.content)
+            local message = json.parse(response.content)
             return message
         else
             return nil
@@ -88,7 +88,7 @@ Bot = {
         local response = gg.makeRequest(url, {["Content-Type"] = "application/x-www-form-urlencoded"}, nil)
 
         if response.code == 200 then
-            local User = json.decode(response.content)
+            local User = json.parse(response.content)
             return User
         else
             return nil
@@ -102,7 +102,7 @@ Bot = {
         local response = gg.makeRequest(url, {["Content-Type"] = "application/x-www-form-urlencoded"}, nil)
 
         if response.code == 200 then
-            local is_true = json.decode(response.content).success
+            local is_true = json.parse(response.content).success
             return is_true
         else
             return nil
@@ -116,7 +116,7 @@ Bot = {
         local response = gg.makeRequest(url, {["Content-Type"] = "application/x-www-form-urlencoded"}, params)
 
         if response.code == 200 then
-            local message = json.decode(response.content)
+            local message = json.parse(response.content)
             return message
         else
             return nil
@@ -132,7 +132,7 @@ Bot = {
         local response = gg.makeRequest(url, {["Content-Type"] = "application/x-www-form-urlencoded"}, params)
 
         if response.code == 200 then
-            local User = json.decode(response.content)
+            local User = json.parse(response.content)
             return User
         else
             return nil
