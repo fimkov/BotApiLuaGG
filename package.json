@@ -1,0 +1,19 @@
+{
+  "name": "bot-api-lua",
+  "version": "1.0",
+  "description": "lua bot api",
+  "main": "build.ts",
+  "scripts": {
+    "start": "ts-node build.ts"
+  },
+  "keywords": [],
+  "author": "fimkov",
+  "license": "ISC",
+  "dependencies": {
+    "luabundle": "^1.6.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12"
+  }
+}
