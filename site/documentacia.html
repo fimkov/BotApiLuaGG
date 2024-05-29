@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot api lua GG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            display: block;
+            color: #ff0000;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            background-color: #ff000050;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transform: translateY(-20px);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            color: #ff0000;
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #ff0000;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 40px;
+            height: 2px;
+            background-color: #ff0000;
+            transform: translateX(-50%);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        pre code {
+            display: block;
+            padding: 1em;
+            overflow-x: auto;
+            background: #000 !important;
+            color: #ff0000 !important;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .copy-button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+        }
+
+        .copy-button:hover {
+            background-color: #ff000080;
+        }
+
+        pre code:hover {
+            filter: brightness(120%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="sidebar">
+            <div class="navbar">
+                <a href="#" onclick="showContent('introduction')">introduction</a>
+                <a href="#" onclick="showContent('section1')">Connecting bot</a>
+                <a href="#" onclick="showContent('section2')">send message</a>
+                <a href="#" onclick="showContent('section3')">get me</a>
+                <a href="#" onclick="showContent('section4')">forward message</a>
+            </div>
+        </div>
+
+        <div class="content" id="content">
+            <h1>documentation</h1>
+            <p>This is my documentation, which will describe my lua bot api (gg).<br><br>Aspi version: 0.1<br>GG version: 101.1<br>Download: <a href="https://github.com/fimkov/BotApiLuaGG/blob/main/build/botApiLua.lua">github</a></p><br>Source code: <a href="https://github.com/fimkov/BotApiLuaGG/tree/main">github</a></p>
+        </div>
+    </div>
+
+    <script>
+        function showContent(sectionId) {
+            var sections = {
+                'introduction': `<div class="section">
+                                    <h2 class="section-title">introduction</h2>
+                                    <p>This is my documentation, which will describe my lua bot api (gg).<br><br>Api version: 0.1<br>GG version: 101.1<br>Download: soon<br>Source code: soon</p>
+                                </div>`,
+                'section1': `<div class="section">
+                                <h2 class="section-title">Connecting bot</h2>
+                                <p>Here I will teach you how to create a bot for further work.</p>
+                                <p>First, install the library and write a simple code:</p>
+                                <pre><code class="lua">
+    require("botApiLua")
+    
+    bot = Bot.create("[TOKEN OF U BOT]")
+    
+    function test(message)
+        gg.alert(bot.get_me())
+    end
+    
+    bot.handlers.register_handler({
+        ["type"] = "message",
+        ["text"] = "any",
+        ["function"] = test
+    })
+    
+    bot.mainloop(1)
+                                </code></pre>
+                                <p>replace [TOKEN OF U BOT] with your token and run this.</p>
+                                <p>perfectly! now your bot will display a pop-up window with information about itself after any command you send!</p>
+                                <p>further on, the documentation will simply contain methods and their descriptions. goodbye</p>
+                            </div>`,
+                'section2': `<div class="section">
+                                <h2 class="section-title">send message</h2>
+                                <p>It's time to get acquainted with our first method! it is a send_message. You can use it to send messages!</p>
+                                <p>arguments:</p>
+                                <ul>
+                                    <li>chat_id (number) - Unique identifier for the target chat or username of the target channel (in the format @channelusername)</li>
+                                    <li>text (string) - Text of the message to be sent, 1-4096 characters after entities parsing</li>
+                                    <li>message_thread_id (number) - Unique identifier for the target message thread (topic) of the forum; for forum supergroups only</li>
+                                    <li>protect_content (boolean) - Protects the contents of the sent message from forwarding and saving</li>
+                                    <li>disable_notification (boolean) - Sends the message silently. Users will receive a notification with no sound.</li>
+                                    <li>message_effect_id (string) - Unique identifier of the message effect to be added to the message; for private chats only</li>
+                                </ul>
+                                <p>return:</p>
+                                <ul>
+                                    <li>Message object</li>
+                                <ul>
+                                <p>example:</p>
+                                <pre><code class="lua">
+    function test(message)
+        bot.send_message(chat_id=message.from.id, text="Hello!")
+    end
+                                </pre></code>
+                                <p>FAQ:</p>
+                                <ul>
+                                    <li>how do I add a keyboard?:<br>It's not possible right now. soon</li>
+                                <ul>
+                            </div>`,
+                'section3': `<div class="section">
+                                <h2 class="section-title">get me</h2>
+                                <p>in this section, I will introduce you to the get_me method.</p>
+                                <p>return:</b>
+                                <ul>
+                                    <li>User object of bot</li>
+                                </ul>
+                                <p>example:</p>
+                                <pre><code class="lua">
+    print(bot.get_me())
+                                </pre></code>s
+
+                            </div>`,
+                'section4': `<div class="section">
+                                <h2 class="section-title">forward message</h2>
+                                <p>in this section, I will introduce you to the forward_message method.</p>
+                                <p>arguments:</b>
+                                <ul>
+                                    <li>chat_id (number) - Unique identifier for the target chat or username of the target channel (in the format @channelusername)</li>
+                                    <li>from_chat_id (number) - Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)</li>
+                                    <li>message_id (number) - Message identifier in the chat specified in from_chat_id</li>
+                                </ul>
+                                <p>return:</b>
+                                <ul>
+                                    <li>Message objects</li>
+                                </ul>
+                                <p>example:</p>
+                                <pre><code class="lua">
+    function test(message)
+        bot.forward_message(chat_id=message.from.id, from_chat_id=message.from.id, message_id=message.message_id)
+    end
+                                </pre></code>
+
+                            </div>`
+            };
+    
+            var content = document.getElementById('content');
+            content.innerHTML = sections[sectionId];
+            content.classList.add('show');
+            content.classList.add('fade-in');
+        }
+    </script>    
+</body>
+</html>
