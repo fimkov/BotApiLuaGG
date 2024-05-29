@@ -124,7 +124,7 @@ Bot = {
         end
     end,
 
-    ---@return table | nilss
+    ---@return table | nil
     get_me = function()
         local url = Bot.base_url .. "getMe"
 
@@ -161,6 +161,22 @@ Bot = {
         if response.code == 200 then
             local message = json.decode(response.content)
             return message
+        else
+            return nil
+        end
+    end,
+
+    ---@param chat_id number
+    ---@param user_id number
+    get_chat_member = function(chat_id, user_id)
+        local url = Bot.base_url .. "getChatMember"
+        local params = "chat_id=" .. chat_id .. "&user_id=" .. user_id
+
+        local response = gg.makeRequest(url, {["Content-Type"] = "application/x-www-form-urlencoded"}, params)
+
+        if response.code == 200 then
+            local User = json.decode(response.content)
+            return User
         else
             return nil
         end
